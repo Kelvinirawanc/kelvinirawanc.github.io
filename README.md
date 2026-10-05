@@ -1,4 +1,4 @@
-# Kelvin Irawan — Data Analyst Portfolio
+# Kelvin Irawan — Data Analyst Portfolio (www.kelvinirawanc.github.io)
 
 Professional Data Analyst & Business Intelligence portfolio featuring real-world analytics projects, interactive dashboards, and experience across banking, financial services, and digital media.
 
