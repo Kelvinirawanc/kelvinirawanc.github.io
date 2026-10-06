@@ -158,8 +158,13 @@ html[data-theme="light"] .project-card{background:linear-gradient(160deg,#f8fbfc
 .skill-group h3{margin:0 0 11px;color:var(--text);font-size:11px;text-transform:uppercase;letter-spacing:.11em}
 .skill-tags{gap:8px}
 .skill-tags>span{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;border-radius:12px;border:1px solid var(--line);color:var(--muted);background:var(--panel);font-size:10px;font-weight:700}
-.tool-tag img{width:16px;height:16px;object-fit:contain}
-.tool-logo.sql-logo{font-style:normal;width:16px;height:16px;border-radius:5px;display:grid;place-items:center;background:rgba(76,119,216,.16);color:var(--accent-2);font-size:6px;font-weight:900;letter-spacing:-.03em}
+.tool-tag img{width:18px;height:18px;object-fit:contain}
+.tool-tag .tool-asset{width:20px;height:20px;object-fit:contain;display:block;flex:0 0 20px}
+.tool-tag .sql-asset{width:21px;height:18px}
+.tool-tag .tableau-asset{width:19px;height:19px}
+.tool-tag .appsflyer-asset{width:19px;height:19px}
+.tool-tag .insider-asset{width:24px;height:16px;border-radius:3px;background:#fff;object-fit:contain}
+.tool-tag .onesignal-asset{width:19px;height:19px}
 
 .edu-card{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
 .edu-logo{width:76px;height:76px;border-radius:18px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);overflow:hidden}
@@ -299,7 +304,12 @@ html[data-theme="light"] .project-card{background:linear-gradient(160deg,#f8fbfc
 .skill-tags>span{padding:8px 10px;font-size:11px}
 .tool-tag img{width:19px;height:19px;object-fit:contain}
 .tool-tag .tool-logo{width:19px;height:19px}
-.tool-tag .sql-logo{font-size:6px}
+.tool-tag .tool-asset{width:21px;height:19px}
+.tool-tag .sql-asset{width:22px;height:18px}
+.tool-tag .tableau-asset{width:20px;height:20px}
+.tool-tag .appsflyer-asset{width:20px;height:20px}
+.tool-tag .insider-asset{width:25px;height:16px}
+.tool-tag .onesignal-asset{width:20px;height:20px}
 .edu-card{grid-template-columns:82px 1fr;gap:17px;padding:18px 0}
 .edu-logo{width:82px;height:70px;border-radius:17px}
 .pcu-logo img{width:70px;max-height:58px}
@@ -361,4 +371,33 @@ html[data-theme="light"] .project-card{background:linear-gradient(160deg,#f8fbfc
   .edu-card{grid-template-columns:64px 1fr;gap:13px}
   .edu-logo{width:64px;height:60px}
   .revou-logo img{width:50px;height:50px}
+}
+
+
+/* V6 — certificate links, reliable local logo treatment, and presentation view */
+.cert-list{display:flex;flex-wrap:wrap;gap:8px}
+.cert-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--muted);font-size:10.5px;padding:8px 11px;border:1px solid var(--line-strong);border-radius:999px;background:var(--panel);transition:transform .2s ease,border-color .2s ease,color .2s ease,background .2s ease}
+.cert-link:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
+.cert-link span{font-size:12px;color:var(--accent);font-weight:900}
+.tool-tag img.tool-asset{background:#fff;border-radius:5px;padding:2px;box-sizing:border-box}
+.tool-tag .sql-asset{width:23px;height:19px;padding:2px}
+.tool-tag .tableau-asset{width:22px;height:20px;padding:2px}
+.tool-tag .appsflyer-asset{width:21px;height:21px;padding:2px}
+.tool-tag .insider-asset{width:25px;height:18px;padding:2px}
+.tool-tag .onesignal-asset{width:21px;height:21px;padding:2px}
+.presentation-exit{display:none;position:fixed;top:16px;right:18px;z-index:1200}
+.presentation-exit.show{display:block}
+.presentation-exit-btn{border:1px solid var(--line-strong);background:var(--panel-strong);color:var(--text);border-radius:999px;padding:9px 13px;font:800 11px/1 Manrope,sans-serif;cursor:pointer;box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.presentation-exit-btn:hover{border-color:var(--accent);color:var(--accent)}
+body.presentation-mode .site-header{opacity:0;pointer-events:none;transform:translateY(-14px)}
+body.presentation-mode .section{scroll-margin-top:14px}
+body.presentation-mode .presentation-exit{display:block}
+body.presentation-mode .hero{min-height:100svh;display:flex;align-items:center;padding-top:30px;padding-bottom:30px}
+body.presentation-mode .hero-grid{width:100%;}
+body.presentation-mode .stats-grid{margin-top:18px}
+body.presentation-mode .noise{opacity:.18}
+
+@media(max-width:700px){
+  .presentation-exit{top:10px;right:10px}
+  .presentation-exit-btn{font-size:10px;padding:8px 10px}
 }

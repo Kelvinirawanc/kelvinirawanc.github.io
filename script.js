@@ -106,3 +106,47 @@ document.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('c
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeModal();
 });
+
+
+// Presentation view: ?fullscreen=1 starts a clean, full-viewport reading mode.
+// Browsers generally block automatic native fullscreen without a user gesture,
+// so this mode keeps normal scrolling while removing the site chrome.
+const presentationExit = document.getElementById('presentationExit');
+const presentationExitBtn = document.getElementById('presentationExitBtn');
+const presentationParam = new URLSearchParams(window.location.search).get('fullscreen');
+
+function enterPresentationMode(){
+  document.body.classList.add('presentation-mode');
+  presentationExit?.classList.add('show');
+  presentationExit?.setAttribute('aria-hidden','false');
+}
+
+function exitPresentationMode(){
+  document.body.classList.remove('presentation-mode');
+  presentationExit?.classList.remove('show');
+  presentationExit?.setAttribute('aria-hidden','true');
+  const url = new URL(window.location.href);
+  url.searchParams.delete('fullscreen');
+  window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+  if (document.fullscreenElement) document.exitFullscreen?.().catch(()=>{});
+}
+
+if (presentationParam === '1' || presentationParam === 'true') enterPresentationMode();
+
+presentationExitBtn?.addEventListener('click', exitPresentationMode);
+
+// Optional native fullscreen from the keyboard. The browser still requires a gesture.
+document.addEventListener('keydown', (event) => {
+  if (event.key.toLowerCase() === 'f' && !event.ctrlKey && !event.metaKey && !event.altKey) {
+    const tag = document.activeElement?.tagName;
+    if (!['INPUT','TEXTAREA','BUTTON','A','SELECT'].includes(tag)) {
+      document.documentElement.requestFullscreen?.().catch(()=>{});
+    }
+  }
+});
+
+document.addEventListener('fullscreenchange', () => {
+  if (document.fullscreenElement) {
+    enterPresentationMode();
+  }
+});
